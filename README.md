@@ -23,7 +23,7 @@ delete_unused_filenode.delete_unused_file_nodes()
 
 ---
 
-### 2. reset_uiConfigurationScriptNode.py
+### 2. reset_UI_config.py
 
 Fixes a Maya 2020 crash issue that occurs when closing the application after opening scene files through Python API calls instead of through the UI.
 
@@ -34,10 +34,10 @@ When Maya scenes are loaded asynchronously via `cmds.file()` in Viewport 2.0, un
 
 **Usage:**
 ```python
-import reset_uiConfigurationScriptNode
+import reset_UI_config
 
 ma_file_path = "path/to/your/scene.ma"
-reset_uiConfigurationScriptNode.reset_uiConfigurationScriptNode(ma_file_path)
+reset_UI_config.reset_uiConfigurationScriptNode(ma_file_path)
 ```
 
 ---
@@ -85,6 +85,32 @@ import delete_unused_animlayers
 
 deleted_layers = delete_unused_animlayers.delete_unused_animlayers()
 print("Deleted layers:", deleted_layers)
+```
+
+---
+
+### 5. show_selection_in_hypershade.py
+
+Displays the currently selected nodes in Maya's Hypershade window.
+
+**Why this is useful:**  
+When working with complex shading networks, it's often helpful to quickly visualize selected nodes and their connections in the Hypershade editor. This script automates opening Hypershade, clearing the graph, and focusing on your selection, saving time compared to manual navigation.
+
+**Features:**
+- Automatically opens the Hypershade window if not already open
+- Clears the current graph and frames the selected nodes
+- Optional parameter to show upstream and downstream connections
+- Uses deferred evaluation for stable graph updates
+
+**Usage:**
+```python
+import show_selection_in_hypershade
+
+# Show selected nodes only
+show_selection_in_hypershade.show_selection_in_hypershade()
+
+# Show selected nodes with their connections
+show_selection_in_hypershade.show_selection_in_hypershade(show_conn=True)
 ```
 
 ## Environment
